@@ -1,0 +1,369 @@
+{% extends 'base.html' %} {% block styles %}
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Anuphan:wght@100;300;600&family=Livvic:ital,wght@0,100;1,200;1,600&family=Montserrat:wght@200;400;500;600&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&family=Roboto+Slab:wght@100;200;300;400;500;900&family=Ubuntu:wght@400;500;700&display=swap");
+
+/*
+font-family: 'Anuphan', sans-serif;
+font-family: 'Livvic', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto Slab', serif;
+font-family: 'Ubuntu', sans-serif;*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  height: 108vh;
+  background-color: black;
+  color: #fff;
+}
+.container {
+  width: 100%;
+  height: auto;
+}
+.container .navigation {
+  width: 100%;
+}
+.container .navigation h1 {
+  text-align: center;
+}
+.container .navigation .heads {
+  background-color: rgb(39, 39, 179);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px 10px;
+}
+.container .navigation .heads a {
+  text-decoration: none;
+  color: wheat;
+  font-size: 23px;
+}
+.container .navigation .heads h1 span{
+    color: wheat;
+    margin-left: 10px;
+    font-size:30px;
+    font-family: "Montserrat", sans-serif;
+}
+.container .conversation {
+  width: 100%;
+  min-height: 95vh;
+  display: flex;
+  padding: 10px 20px;
+}
+.container .conversation .left {
+  width: 25%;
+  padding-left: 20px;
+}
+.container .conversation .left .links {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.container .conversation .left .links .myLinks li {
+  font-style: italic;
+  font-size: 20px;
+  margin-bottom: 29px;
+  color: grey;
+  font-family: "Ubuntu", sans-serif;
+}
+.container .conversation .right {
+  width: 75%;
+  min-height: 104vh;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)),
+    url("https://api.time.com/wp-content/uploads/2023/04/GettyImages-1430921659.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.container .conversation .right .wrap {
+  width: 100%;
+  min-height: 104vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.container .conversation .right .wrap form {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  padding: 7px 4px;
+  margin-top: 100px;
+}
+.container .conversation .right .wrap form .message-input {
+  width: 90%;
+  resize: vertical;
+  min-height: 30px;
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  outline: none;
+  padding: 5px 10px;
+}
+.container .conversation .right .wrap form button[type="submit"] {
+  width: 10%;
+  height: 45px;
+  font-size: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: 0px;
+}
+.container .conversation .right .wrap form button:hover {
+  background-color: blue;
+  cursor: pointer;
+}
+
+.container .conversation .right .wrap .question {
+  color: rgb(0, 255, 255);
+  margin-bottom: 0px;
+  padding: 5px 5px;
+  font-style: italic;
+  letter-spacing: 2px;
+  display: flex;
+}
+.container .conversation .right .wrap .question .user .userImage {
+  color: rgb(181, 137, 55);
+  background-color: rgb(49, 47, 47);
+  font-size: 18px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+.container .conversation .right .wrap .question .user {
+  position: relative;
+  top: 0px;
+}
+.container .conversation .right .wrap .question p {
+  padding: 3px 10px;
+  background-color: rgba(37, 37, 160, 0.4);
+}
+.container .conversation .right .wrap .answer p {
+  background: linear-gradient(
+    to right,
+    rgba(227, 9, 158, 0.3),
+    rgba(255, 255, 0, 0.3),
+    rgba(0, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.3)
+  );
+  font-size: 18px;
+  padding:5px;
+  letter-spacing: 2px;
+  font-family: "Ubuntu", sans-serif;
+  margin-left: 20px;
+  color: #fff;
+  height: fit-content;
+}
+.container .conversation .right .wrap .question .user::before {
+  position: absolute;
+  content: "You";
+  font-size: 20px;
+  top: -24px;
+  left: 0;
+  color: azure;
+}
+.container .conversation .right .wrap .question p {
+  font-size: 16px;
+  font-family: "Ubuntu", sans-serif;
+}
+.container .conversation .right .wrap .answer{
+  margin-bottom: 40px;
+  margin-top: 5px;
+  padding: 0;
+  height: fit-content;
+}
+.container .conversation .right .wrap .answer .ans {
+  display: flex;
+}
+.container .conversation .right .wrap .answer .ans .answe {
+  border-radius: 4px;
+  font-size: 22px;
+  color: yellow;
+  margin-top: 20px;
+}
+.container .conversation .right .wrap .answer .ans {
+  position: relative;
+  margin-left: 10px;
+}
+.container .conversation .right .wrap .answer .ans::before {
+  position: absolute;
+  content: "AI";
+  top: -3px;
+  left: 0px;
+  font-size: 17px;
+  letter-spacing: 3px;
+}
+
+</style>
+{% endblock %}
+
+
+
+{% block content %}
+<div class="container">
+
+  <!-- Navigation starts here -->
+  
+  <div class="navigation">
+    {% if user.is_authenticated %}
+      <div class="heads">
+          <h1>Welcome <span>{{user.username}}</span> !</h1>
+          <a href="logout">Logout</a>
+      </div>
+      {% endif %}
+      <h1>Chats</h1>
+  </div>
+  <!-- Navigation ends here -->
+  
+  <!-- All about the conversation with AI starts here  -->
+  <div class="conversation">
+      <!-- Left side of the conversation starts here -->
+      <div class="left">
+          <h1>Searched links</h2>
+          <div class="links">
+              <ol class="myLinks">
+              </ol>
+          </div>
+
+      </div>
+      <!-- left side ends here  -->
+
+      
+      <!-- The right side of the conversation ends here -->
+      <div class="right">
+         <div class="wrap">
+           <!-- Side of the conversation starts here -->
+           
+           {% for chat in chats %} 
+           {% if chat.user == request.user %}
+           
+           <div class="question">
+                  <div class="user">
+                    <i class="fa fa-user userImage"></i>
+                  </div>
+                  <p>
+                   {{chat.message}}
+                  </p>
+                </div>
+
+                <div class="answer">
+                  <div class="ans">
+                   <i class="fa fa-cogs answe"></i>
+                    <p>
+                    {{chat.response}}
+                    </p>
+                  </div>
+                </div>
+
+                {% endif %}
+                {% endfor %}
+           <!-- Chat with AI ends ahere  -->
+           
+           <!-- Starting the formto send question  -->
+           <form class="message-form">
+            {%csrf_token%}
+               <textarea rows="1" name="message" id="message" class="message-input" placeholder="Type question..."></textarea>
+               <button type="submit" class="submitBtn">Send</button>
+           </form>
+           <!-- End of the form  -->
+         </div>
+      </div>
+      <!-- End of the right section -->
+  </div>
+  <!-- End of all about conversation -->
+</div>
+
+<script>
+  const messagesList = document.querySelector(".wrap");
+  const messageForm = document.querySelector(".message-form");
+  const messageInput = document.querySelector(".message-input");
+  let index = 0;
+  let titleIndex = 0;
+
+  messageForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const message = messageInput.value.trim();
+    if (message.length === 0) {
+      return;
+    }
+
+    const messageItem = document.createElement("div");
+    messageItem.classList.add("question");
+    messageItem.innerHTML = `
+
+    <div class="user">
+        <i class="fa fa-user userImage"></i>
+    </div>
+      <p>
+        ${message}
+      </p>`;
+    messagesList.appendChild(messageItem);
+    messageInput.value = "";
+
+    const messageItem1 = document.createElement("div");
+    messageItem1.classList.add("answer");
+    messageItem1.innerHTML = `
+    <div class="ans">
+        <i class="fa fa-cogs answe"></i>
+        <p>
+        Jodick is Thinking...
+        </p>
+    </div>
+      `;
+
+    messagesList.appendChild(messageItem1);
+
+    fetch("chatbot", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        csrfmiddlewaretoken: document.querySelector(
+          "[name=csrfmiddlewaretoken]"
+        ).value,
+        message: message,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const response = data.response;
+        let title = data.title;
+        let myText = response;
+
+        let sms = messageItem1.querySelector(".ans");
+        let displayMessage = sms.querySelector("p");
+
+        let displayMessageText = setInterval(() => {
+          displayMessage.textContent = myText.slice(0, index);
+          index++;
+          if (index > myText.length) {
+            setTimeout(() => {
+                    clearInterval(displayMessageText);
+                    index = 0;
+                  }, 1000);
+          }
+        }, 50);
+
+
+
+      let linkList = document.querySelector(".myLinks");
+      const li = document.createElement("li");
+      linkList.append(li);
+      let showTitle = setInterval(()=>{
+        li.textContent = title.slice(0, titleIndex);
+        titleIndex++;
+        if(titleIndex > title.length) {
+          setTimeout(()=>{
+            clearInterval(showTitle);
+            titleIndex = 0;
+          });
+        }
+      },100);
+      });
+  });
+</script>
+{% endblock %}
